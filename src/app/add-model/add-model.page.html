@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add Model</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="addModelForm" (ngSubmit)="submitValue(addModelForm.value)">
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input type="text" placeholder="Model Name" formControlName="model">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-select placeholder="Select Manufacture" formControlName="manufacturer">
+              <ion-select-option value="f">Female</ion-select-option>
+              <ion-select-option value="m">Male</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="text" placeholder="Color" formControlName="color">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="tel" placeholder="Manufacturing Year" formControlName="year">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="text" placeholder="Registration Number" formControlName="register_number">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="text" placeholder="Note" formControlName="notes">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-button type="button" [disabled]="addModelForm.invalid" expand="block" shape="round">
+        Submit
+      </ion-button>
+
+    </form>
+  </ion-grid>
+</ion-content>
