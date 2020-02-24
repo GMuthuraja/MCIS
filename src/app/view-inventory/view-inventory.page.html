@@ -8,5 +8,32 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let manufacturer of manufacturerList">
+    <ion-card-content>
+      <ion-row>
+        <ion-col><b>SL.No:</b></ion-col>
+        <ion-col>{{manufacturer.Pid}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><b>Manufacturer:</b></ion-col>
+        <ion-col>{{manufacturer.ManufacturerName}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><b>Model:</b></ion-col>
+        <ion-col>{{manufacturer.Model}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><b>Color:</b></ion-col>
+        <ion-col>{{manufacturer.Color}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><b>Registration Number:</b></ion-col>
+        <ion-col>{{manufacturer.RegNumber}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><b>Notes:</b></ion-col>
+        <ion-col>{{manufacturer.Notes}}</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

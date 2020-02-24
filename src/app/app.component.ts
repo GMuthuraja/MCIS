@@ -75,8 +75,18 @@ export class AppComponent {
     });
   }
 
+  updateRow(row_values) {
+    this.databaseObj.executeSql("UPDATE " + this.table_name + " SET (Model, Color, RegNumber, Notes) = (?,?,?,?) where Pid =" + row_values.index + ";", [row_values.model, row_values.color, row_values.register_number, row_values.notes]).then(() => {
+      console.log('Row Updated!');
+      //this.router.navigate(['/add-model']);
+    }).catch(e => {
+      console.log("error " + JSON.stringify(e));
+    });
+  }
+
+
   getManufacturerList() {
-    return this.databaseObj.executeSql("SELECT ManufacturerName FROM " + this.table_name, []).then((res) => {
+    return this.databaseObj.executeSql("SELECT * FROM " + this.table_name, []).then((res) => {
       let row_data = [];
       if (res.rows.length > 0) {
         for (var i = 0; i < res.rows.length; i++) {

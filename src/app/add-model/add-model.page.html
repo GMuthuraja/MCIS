@@ -20,9 +20,8 @@
         </ion-col>
         <ion-col size="6">
           <ion-item>
-            <ion-select placeholder="Select Manufacture" formControlName="manufacturer">
-              <ion-select-option value="f">Female</ion-select-option>
-              <ion-select-option value="m">Male</ion-select-option>
+            <ion-select placeholder="Select Manufacture" formControlName="manufacturer" (ionChange)="onChange($event)">
+              <ion-select-option *ngFor="let manufacturer of manufacturerList" [value]="manufacturer">{{manufacturer.ManufacturerName}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -64,7 +63,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-button type="button" [disabled]="addModelForm.invalid" expand="block" shape="round">
+      <ion-button type="submit" [disabled]="addModelForm.invalid" expand="block" shape="round">
         Submit
       </ion-button>
 

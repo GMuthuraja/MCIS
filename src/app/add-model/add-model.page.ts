@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -11,6 +11,8 @@ import { AppComponent } from '../app.component';
 export class AddModelPage implements OnInit {
 
   addModelForm: FormGroup;
+  manufacturerList: any;
+  selectedItemIndex: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,8 +30,27 @@ export class AddModelPage implements OnInit {
     });
 
     this.app.getManufacturerList().then(res => {
-      console.log(res);
+      if (res) {
+        this.manufacturerList = res;
+      }
     });
   }
 
+  onChange($event) {
+    this.selectedItemIndex = $event.target.value.Pid;
+  }
+
+
+  submitValue(form: NgForm) {
+    let newValues = {
+      index: this.selectedItemIndex,
+      model: form["model"],
+      manufacturer: form["manufacturer"].ManufacturerName,
+      color: form["color"],
+      register_number: form["register_number"],
+      notes: form["notes"]
+    }
+
+    this.app.updateRow(newValues);
+  }
 }
